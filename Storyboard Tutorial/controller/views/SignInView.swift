@@ -23,8 +23,8 @@ class SignInView: UIViewController {
             alertController.alert(title: "Error", message: "비밀번호를 입력하십시오.")
         }
         else{
-            let response = httpController.get(
-                url: "https://tails1101.cafe24.com/test/signin_get.php",
+            let response = httpController.post(
+                url: "https://tails1101.cafe24.com/test/signinjson.php",
                 params: ["username": usernameTbox.text!, "password": passwordTbox.text!]
             )
             
