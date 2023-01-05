@@ -24,7 +24,7 @@ class SignInView: UIViewController {
         }
         else{
             let response = httpController.post(
-                url: "https://tails1101.cafe24.com/test/signinjson.php",
+                url: "(URL 입력)",
                 params: ["username": usernameTbox.text!, "password": passwordTbox.text!]
             )
             
