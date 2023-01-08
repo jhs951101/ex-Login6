@@ -3,14 +3,16 @@ import UIKit
 class SignedView: UIViewController {
     
     @IBOutlet weak var welcomeLbl: UILabel!
+    
+    private var username: String!
     private var name: String!
     
     override func viewDidLoad() {
         // 뷰를 새로 생성할 때만 실행. 뒤로가기를 눌러서 보면 실행X.
         super.viewDidLoad()
         
-        welcomeLbl?.text = String(format: "%@님 환영합니다!", name)
-        //welcomeLbl?.text = "\(name!)님 환영합니다!"
+        welcomeLbl?.text = String(format: "%@(%@)님 환영합니다!", name, username)
+        //welcomeLbl?.text = "\(name!)(\(username!))님 환영합니다!"
     }
     
     /*
@@ -22,6 +24,10 @@ class SignedView: UIViewController {
     
     @IBAction func signoutBtnClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    public func setUsername(u: String){
+        username = u
     }
     
     public func setName(n: String){

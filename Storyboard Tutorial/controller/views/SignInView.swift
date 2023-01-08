@@ -16,16 +16,19 @@ class SignInView: UIViewController {
     }
 
     @IBAction func signinBtnClicked(_ sender: Any) {
-        if(usernameTbox.text!.isEmpty){
+        let username = usernameTbox.text!
+        let password = passwordTbox.text!
+        
+        if(username.isEmpty){
             alertController.alert(title: "Error", message: "아이디를 입력하십시오.")
         }
-        else if(passwordTbox.text!.isEmpty){
+        else if(password.isEmpty){
             alertController.alert(title: "Error", message: "비밀번호를 입력하십시오.")
         }
         else{
             let response = httpController.post(
-                url: "(URL 입력)",
-                params: ["username": usernameTbox.text!, "password": passwordTbox.text!]
+                url: "https://tails1101.cafe24.com/test/signin_post_json.php",
+                params: ["username": username, "password": password]
             )
             
             if(response == nil){
@@ -39,11 +42,17 @@ class SignInView: UIViewController {
                     let name = response!["name"] as! String
                     
                     let nextView = self.storyboard?.instantiateViewController(withIdentifier: "SignedView") as! SignedView
+                    nextView.setUsername(u: username)
                     nextView.setName(n: name)
+                    
                     self.navigationController?.pushViewController(nextView, animated: true)
                 }
             }
         }
+    }
+    
+    @IBAction func signupBtnClicked(_ sender: Any) {
+        alertController.alert(title: "Error", message: "죄송합니다. 아직 준비중입니다.")
     }
 }
 
